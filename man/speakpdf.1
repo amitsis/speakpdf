@@ -54,7 +54,39 @@ Do not start automatic playback with
 .SH ENVIRONMENT
 .TP
 .B OPENAI_API_KEY
-Required OpenAI API key.
+Required.
+Specifies the OpenAI API key used to authenticate requests to the OpenAI
+Text-to-Speech API.
+
+This environment variable
+.B must
+be defined before
+.B speakpdf
+is invoked.
+If
+.B OPENAI_API_KEY
+is not set or is empty,
+.B speakpdf
+cannot authenticate with the OpenAI API and will terminate with an error.
+The program cannot be used successfully without a valid API key.
+
+.PP
+Example:
+
+.EX
+export OPENAI_API_KEY="sk-..."
+speakpdf document.pdf
+.EE
+
+.PP
+To make this setting permanent, add the
+.B export
+command to your shell initialization file (for example,
+.IR ~/.bashrc ,
+.IR ~/.profile ,
+or
+.IR ~/.zshrc )
+and start a new shell or source the file.
 .SH EXAMPLES
 .TP
 .B speakpdf document.pdf
